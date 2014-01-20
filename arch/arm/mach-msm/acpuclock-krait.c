@@ -55,7 +55,7 @@
 /* PTE EFUSE register offset. */
 #define PTE_EFUSE    0xC0
 
-#define FREQ_TABLE_SIZE    37
+#define FREQ_TABLE_SIZE    41
 #define SECCLKAGD		BIT(4)
 
 static DEFINE_MUTEX(driver_lock);
