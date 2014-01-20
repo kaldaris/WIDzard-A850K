@@ -413,3 +413,4 @@ ifdef CONFIG_FAB2210_DEBUG
 obj-y += i2c_i_check.o
 endif
 
+obj-$(CONFIG_FORCE_FAST_CHARGE) += fastchg.o
