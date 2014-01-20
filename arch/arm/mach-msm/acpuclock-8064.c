@@ -140,9 +140,10 @@ static struct l2_level l2_freq_tbl[] __initdata __initdata = {
 };
 
 static struct acpu_level tbl_slow[] __initdata = {
-	{ 1, {   162000, HFPLL, 2, 0x10 }, L2(0),   900000 },
-	{ 0, {   226000, HFPLL, 2, 0x14 }, L2(0),   900000 },
-	{ 1, {   304000, HFPLL, 2, 0x18 }, L2(0),   925000 },
+	{ 1, {   162000, HFPLL, 2, 0x0C }, L2(0),   900000 },
+	{ 1, {   216000, HFPLL, 2, 0x10 }, L2(0),   900000 },
+	{ 0, {   270000, HFPLL, 2, 0x14 }, L2(0),   925000 },
+	{ 1, {   324000, HFPLL, 2, 0x18 }, L2(0),   925000 },
 	{ 0, {   378000, HFPLL, 2, 0x1C }, L2(0),   950000 },
 	{ 1, {   384000, PLL_8, 0, 0x00 }, L2(0),   950000 },
 	{ 0, {   432000, HFPLL, 2, 0x20 }, L2(6),   975000 },
@@ -241,7 +242,7 @@ static struct acpu_level tbl_fast[] __initdata = {
 	{ 1, {  1620000, HFPLL, 1, 0x3C }, L2(15), 1175000 },
 	{ 0, {  1728000, HFPLL, 1, 0x40 }, L2(15), 1225000 },
 	{ 1, {  1836000, HFPLL, 1, 0x44 }, L2(15), 1275000 },
-	{ 0  {  1890000, HFPLL, 1, 0x45 }, L2(15), 1325000 },
+	{ 0, {  1890000, HFPLL, 1, 0x45 }, L2(15), 1325000 },
 	{ 1, {  1944000, HFPLL, 1, 0x46 }, L2(15), 1350000 },
 	{ 0, { 0 } }
 };
@@ -548,12 +549,12 @@ static struct pvs_table pvs_tables[NUM_SPEED_BINS][NUM_PVS] __initdata = {
 	[0][PVS_FASTER]  = {tbl_faster, sizeof(tbl_faster), 25000 },
 
 	[1][0] = { tbl_PVS0_1700MHz, sizeof(tbl_PVS0_1700MHz),     0 },
-	[1][1] = { tbl_PVS0_1700MHz, sizeof(tbl_PVS1_1700MHz),     0 },
-	[1][2] = { tbl_PVS0_1700MHz, sizeof(tbl_PVS2_1700MHz),     0 },
-	[1][3] = { tbl_PVS0_1700MHz, sizeof(tbl_PVS3_1700MHz),     0 },
-	[1][4] = { tbl_PVS0_1700MHz, sizeof(tbl_PVS4_1700MHz),     0 },
-	[1][5] = { tbl_PVS0_1700MHz, sizeof(tbl_PVS5_1700MHz),     0 },
-	[1][6] = { tbl_PVS0_1700MHz, sizeof(tbl_PVS6_1700MHz),     0 },
+	[1][1] = { tbl_PVS1_1700MHz, sizeof(tbl_PVS1_1700MHz),     0 },
+	[1][2] = { tbl_PVS2_1700MHz, sizeof(tbl_PVS2_1700MHz),     0 },
+	[1][3] = { tbl_PVS3_1700MHz, sizeof(tbl_PVS3_1700MHz),     0 },
+	[1][4] = { tbl_PVS4_1700MHz, sizeof(tbl_PVS4_1700MHz),     0 },
+	[1][5] = { tbl_PVS5_1700MHz, sizeof(tbl_PVS5_1700MHz),     0 },
+	[1][6] = { tbl_PVS6_1700MHz, sizeof(tbl_PVS6_1700MHz),     0 },
 
 	[2][0] = { tbl_PVS0_2000MHz, sizeof(tbl_PVS0_2000MHz),     0 },
 	[2][1] = { tbl_PVS1_2000MHz, sizeof(tbl_PVS1_2000MHz),     0 },
