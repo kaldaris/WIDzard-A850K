@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2012, Code Aurora Forum. All rights reserved.
+ * Copyright (c) 2011-2012, The Linux Foundation. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -56,6 +56,20 @@
 #define PTE_EFUSE    0xC0
 
 #define SECCLKAGD		BIT(4)
+
+#ifdef CONFIG_OC_ULTIMATE
+#ifdef CONFIG_LOW_CPUCLOCKS
+#define FREQ_TABLE_SIZE		41
+#else
+#define FREQ_TABLE_SIZE		37
+#endif
+#else
+#ifdef CONFIG_LOW_CPUCLOCKS
+#define FREQ_TABLE_SIZE		39
+#else
+#define FREQ_TABLE_SIZE		35
+#endif
+#endif
 
 static DEFINE_MUTEX(driver_lock);
 static DEFINE_SPINLOCK(l2_lock);
@@ -878,8 +892,8 @@ static void __init bus_init(const struct l2_level *l2_level)
 
 #ifdef CONFIG_CPU_VOLTAGE_TABLE
 
-#define HFPLL_MIN_VDD     600000
-#define HFPLL_MAX_VDD    1500000
+#define HFPLL_MIN_VDD		 600000
+#define HFPLL_MAX_VDD		1450000
 
 ssize_t acpuclk_get_vdd_levels_str(char *buf) {
 
@@ -890,8 +904,8 @@ ssize_t acpuclk_get_vdd_levels_str(char *buf) {
 
 		for (i = 0; drv.acpu_freq_tbl[i].speed.khz; i++) {
 			/* updated to use uv required by 8x60 architecture - faux123 */
-				len += sprintf(buf + len, "%8lu: %8d\n", drv.acpu_freq_tbl[i].speed.khz,
-		drv.acpu_freq_tbl[i].vdd_core );
+			len += sprintf(buf + len, "%8lu: %8d\n", drv.acpu_freq_tbl[i].speed.khz,
+				drv.acpu_freq_tbl[i].vdd_core );
 		}
 
 		mutex_unlock(&driver_lock);
@@ -922,10 +936,10 @@ void acpuclk_set_vdd(unsigned int khz, int vdd_uv) {
 	pr_warn("faux123: user voltage table modified!\n");
 	mutex_unlock(&driver_lock);
 }
-#endif  /* CONFIG_CPU_VOTALGE_TABLE */
+#endif	/* CONFIG_CPU_VOTALGE_TABLE */
 
 #ifdef CONFIG_CPU_FREQ_MSM
-static struct cpufreq_frequency_table freq_table[NR_CPUS][37];
+static struct cpufreq_frequency_table freq_table[NR_CPUS][FREQ_TABLE_SIZE];
 
 static void __init cpufreq_table_init(void)
 {
@@ -1239,7 +1253,6 @@ static void __init hw_init(void)
 	}
 
 	bus_init(l2_level);
-	acpuclk_krait_set_rate(0, 1458000, SETRATE_CPUFREQ);
 }
 
 int __init acpuclk_krait_init(struct device *dev,

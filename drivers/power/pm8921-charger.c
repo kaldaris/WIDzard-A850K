@@ -1895,12 +1895,15 @@ static void __pm8921_charger_vbus_draw(unsigned int mA)
 				case FAST_CHARGE_1300:
 					i = 12;
 					break;
+				case FAST_CHARGE_1500:
+					i = 14;
+					break;
 				default:
 					break;
-				}
 			}
-			rc = pm_chg_iusbmax_set(the_chip, i);
-			pr_info("charge curent index => %d\n", i);
+		}
+		rc = pm_chg_iusbmax_set(the_chip, i);
+		pr_info("charge curent index => %d\n", i);
 #else
 		rc = pm_chg_iusbmax_set(the_chip, i);
 #endif

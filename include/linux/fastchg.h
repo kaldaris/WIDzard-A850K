@@ -30,7 +30,8 @@ extern int fast_charge_level;
 #define FAST_CHARGE_900		900
 #define FAST_CHARGE_1100	1100
 #define FAST_CHARGE_1300	1300
+#define FAST_CHARGE_1500	1500
 
-#define FAST_CHARGE_LEVELS	"500 700 900 1100 1300"
+#define FAST_CHARGE_LEVELS	"500 700 900 1100 1300 1500"
 
 #endif
