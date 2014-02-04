@@ -1253,6 +1253,7 @@ static void __init hw_init(void)
 	}
 
 	bus_init(l2_level);
+	acpuclk_krait_set_rate(0, 1458000, SETRATE_CPUFREQ);
 }
 
 int __init acpuclk_krait_init(struct device *dev,
