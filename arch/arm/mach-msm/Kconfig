@@ -1683,37 +1683,6 @@ config MSM_CPU_FREQ_MIN
 
 endif # CPU_FREQ_MSM
 
-config LOW_CPUCLOCKS
-	bool "Enable ultra low CPU clocks"
-	default n
-	help
-	  Ultra low cpu frequencies enabled for CPU and L2 cache
-
-config CPU_OVERCLOCK
-	bool "Enable CPU Overclocking option"
-	default n
-	help
-	  Krait overclocking up to 1.84 GHz
-
-config OC_ULTIMATE
-	bool "allow 1.944 GHZ max OC option"
-	depends on CPU_OVERCLOCK
-	default n
-	help
-	  Unlock the ultimate Overclock freq speed @ 1.944 GHz
-
-config CPU_VOLTAGE_TABLE
-	bool "Enable CPU Voltage Table via sysfs for adjustments"
-	default n
-	help
-	  Krait User Voltage Control
-
-config GPU_OVERCLOCK
-	bool "Enable GPU Overclocking option"
-	default n
-	help
-	  APQ8064 GPU overclocking 
-
 config MSM_CPU_AVS
 	bool "Enable software controlled Adaptive Voltage Scaling (AVS)"
 	depends on (ARCH_MSM_SCORPION && QSD_SVS)
@@ -2713,12 +2682,5 @@ config MSM_HSIC_SYSMON_TEST
 	  This will create a debugfs file entry named "hsic_sysmon_test" which
 	  can be read and written to send character data to the sysmon port of
 	  the modem over USB.
-
-config FORCE_FAST_CHARGE
-	bool "Force AC charge mode at will"
-	default y
-	help
-	  A simple sysfs interface to force adapters that
-	  are detected as USB to charge as AC.
 
 endif
