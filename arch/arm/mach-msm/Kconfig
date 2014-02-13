@@ -1695,6 +1695,12 @@ config CPU_VOLTAGE_TABLE
 	help
 	  Krait user voltage control
 
+config GPU_OVERCLOCK
+	bool "Enable GPU overclocking option"
+	default n
+	help
+	  Adreno 3xx overclocking up to 487.5MHz
+
 config MSM_CPU_AVS
 	bool "Enable software controlled Adaptive Voltage Scaling (AVS)"
 	depends on (ARCH_MSM_SCORPION && QSD_SVS)
