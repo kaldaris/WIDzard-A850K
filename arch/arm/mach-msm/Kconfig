@@ -1693,7 +1693,13 @@ config CPU_OVERCLOCK
 	bool "Enable CPU overclocking option"
 	default n
 	help
-	  Krait overclocking up to 1.836GHz
+	  Krait overclocking up to 1.728GHz
+
+config CPU_ULTIMATE
+	bool "Enable CPU overclocking to 1.944GHz"
+	default n
+	help
+	  Unlock the ultimate overclock frequency to 1.944GHz
 
 config CPU_VOLTAGE_TABLE
 	bool "Enable CPU voltage table via sysfs for adjustments"
